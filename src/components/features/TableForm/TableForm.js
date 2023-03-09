@@ -84,7 +84,7 @@ const TableForm = () => {
               <div className="p-1 flex me-2"><Form.Label style={({ marginRight: "5px" })}><strong>Status:</strong></Form.Label></div>
               <div className="">
                 <Form.Select aria-label="Default select example"
-                  {...register("description2", { required: true, min: 1 })}
+                  {...register("description2", { required: true })}
                   value={status}
                   onChange={(e) => handleStatus(e.target.value)}
                   placeholder="Nr" style={{ width: "280px", height: "40px", }}
