@@ -1,7 +1,7 @@
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllTables } from '../../../redux/postsRedux';
+import { getAllTables } from '../../../redux/tablesRedux';
 import ClipLoader from "react-spinners/ClipLoader";
 
 const Tables = () => {

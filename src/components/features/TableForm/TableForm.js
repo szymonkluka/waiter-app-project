@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Col, Form, Row, FormControl } from 'react-bootstrap';
-import { addChangedData } from '../../../redux/postsRedux';
+import { addChangedData } from '../../../redux/tablesRedux';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getTableById } from '../../../redux/postsRedux';
+import { getTableById } from '../../../redux/tablesRedux';
 import { useForm } from 'react-hook-form';
 
 
@@ -98,26 +98,26 @@ const TableForm = () => {
               <div className="p-1 flex-2 me-4"><Form.Label style={({ marginLeft: "0px" })}><strong>People:</strong></Form.Label></div>
               <div className="p-1 flex">
                 <FormControl
-                  {...register("description", { required: true, min: 1 })}
+                  {...register("descriptionPeopleAmount", { required: true, min: 1 })}
                   input type="number"
                   min="0"
                   max="10"
                   value={peopleAmount}
                   onChange={(e) => setPeopleAmount(e.target.value)}
                   placeholder="Nr" style={{ width: "58px", height: "30px", textAlign: "center", marginRigt: "50px", }} />
-                {errors.description && <small className="d-block form text-danger mt-2">This field is required (minimal value: 1)</small>}
+                {errors.descriptionPeopleAmount && <small className="d-block form text-danger mt-2">This field is required (minimal value: 1)</small>}
               </div>
               <div className="p-2 flex-2">/</div>
               <div className="p-1 flex">
                 <FormControl
-                  {...register("descriptions", { required: true, min: 1 })}
+                  {...register("descriptionMaxPeopleAmount", { required: true, min: 1 })}
                   input type="number"
                   min="0"
                   max="10"
                   value={maxPeopleAmount}
                   onChange={(e) => handleStatus2(e.target.value)}
                   placeholder="Nr" style={{ width: "58px", height: "30px", marginRigt: "50px", }} />
-                {errors.descriptions && <small className="d-block form text-danger mt-2">This field is required (minimal value: 1)</small>}
+                {errors.descriptionMaxPeopleAmount && <small className="d-block form text-danger mt-2">This field is required (minimal value: 1)</small>}
               </div>
             </div>
           </div>
@@ -129,11 +129,11 @@ const TableForm = () => {
                 <div className="p-2 flex-2"><Form.Label style={({ marginLeft: "20px" })}>$</Form.Label></div>
                 <div className="p-1 flex">
                   <FormControl
-                    {...register("descriptionS", { required: true, min: 1 })}
+                    {...register("descriptionSetBill", { required: true, min: 1 })}
                     value={bill}
                     onChange={(e) => setBill(e.target.value)}
                     placeholder="Nr" style={{ width: "45px", height: "30px", marginRigt: "50px", }} />
-                  {errors.descriptionS && <small className="d-block form text-danger mt-2">This field is required (minimal value: 1)</small>}
+                  {errors.descriptionSetBill && <small className="d-block form text-danger mt-2">This field is required (minimal value: 1)</small>}
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@ import TableEdit from './components/pages/TableEdit/TableEdit';
 import TableForm from './components/features/TableForm/TableForm';
 import Header from "./components/views/Header/Header";
 import Footer from "./components/views/Footer/Footer";
-import { fetchData } from './redux/postsRedux';
+import { fetchData } from './redux/tablesRedux';
 import { useDispatch } from 'react-redux';
 import ClipLoader from "react-spinners/ClipLoader";
 

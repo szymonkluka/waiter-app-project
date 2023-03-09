@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getTableById } from '../../../redux/postsRedux';
+import { getTableById } from '../../../redux/tablesRedux';
 import TableForm from '../TableForm/TableForm';
 
 const EditTableForm = () => {

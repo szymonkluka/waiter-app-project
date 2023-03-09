@@ -1,5 +1,5 @@
 import EditTableForm from "../../features/EditTableForm/EditTableForm";
-import { getTableById } from '../../../redux/postsRedux';
+import { getTableById } from '../../../redux/tablesRedux';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
