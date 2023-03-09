@@ -16,21 +16,22 @@ const TableForm = () => {
   const table = useSelector((state) => getTableById(state, id));
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
+
   const handleSubmit = () => {
-
     const clipLoader = () => { return <ClipLoader size={150}></ClipLoader> }
-
     const handleStatus2 = () => {
       if (setMaxPeopleAmount < (peopleAmount)) {
         // eslint-disable-next-line no-unused-expressions
         setPeopleAmount === setMaxPeopleAmount;
       }
-
       setMaxPeopleAmount(peopleAmount);
-
     };
     if (maxPeopleAmount < (peopleAmount)) {
       alert("The number of customers cannot exceed the maximum number of customers at the table. Please change input nr 1 in People form.");
+      return
+    }
+    if (peopleAmount === ('0')) {
+      alert("The number of customers must be bigger than 0.");
       return
     }
 
