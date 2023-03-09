@@ -1,3 +1,5 @@
+import { ClipLoader } from 'react-spinners';
+
 export const getAllTables = ({ tables }) => tables;
 export const getTableById = ({ tables }, id) => tables.find(table => table.id === id);
 
@@ -48,7 +50,8 @@ export const addChangedData = (tables) => {
     };
     fetch(`${'http://localhost:3131'}/tables/${tables.id}`, options)
       .then((response) => response.json())
-      .then((data) => dispatch(editedTables(data)));
+      .then((data) => dispatch(editedTables, ClipLoader(data)));
+
   };
 }
 

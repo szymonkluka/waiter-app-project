@@ -8,7 +8,6 @@ const EditTableForm = () => {
   const { id } = useParams();
   const tableData = useSelector(state => getTableById(state, id));
 
-
   return (
     <TableForm
       actionText="Edit table"
@@ -17,7 +16,6 @@ const EditTableForm = () => {
       maxPeople={tableData.maxPeople}
       bill={tableData.bill}
     />
-
   )
 }
 

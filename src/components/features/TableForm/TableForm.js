@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getTableById } from '../../../redux/tablesRedux';
 import { useForm } from 'react-hook-form';
+import { ClipLoader } from 'react-spinners';
 
 
 const TableForm = () => {
@@ -16,6 +17,8 @@ const TableForm = () => {
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
   const handleSubmit = () => {
+
+    const clipLoader = () => { return <ClipLoader size={150}></ClipLoader> }
 
     const handleStatus2 = () => {
       if (setMaxPeopleAmount < (peopleAmount)) {
@@ -37,6 +40,7 @@ const TableForm = () => {
       };
       dispatch(addChangedData(editedData, handleStatus2));
       navigate('/');
+      clipLoader(handleSubmit);
     }
   };
 
@@ -56,14 +60,15 @@ const TableForm = () => {
     setStatus(value);
   };
 
-  const handleStatus2 = (value) => {
+  const handleStatus2 = () => {
     if (setMaxPeopleAmount < (peopleAmount)) {
       // eslint-disable-next-line no-unused-expressions
       setPeopleAmount === setMaxPeopleAmount;
     }
-    setMaxPeopleAmount(peopleAmount);
-  };
 
+    setMaxPeopleAmount(peopleAmount);
+
+  };
 
 
   return (
@@ -145,6 +150,9 @@ const TableForm = () => {
             onClick={validate(handleSubmit)}
             className="my-3">Update
           </Button>
+
+
+
         </Form>
       </Col>
     </Row>
