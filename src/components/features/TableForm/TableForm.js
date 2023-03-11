@@ -30,7 +30,7 @@ const TableForm = () => {
       return
     }
     if (status === 'Busy' && bill === '0') {
-      alert("Bill value must be bigger than 0");
+      alert("Amount value must be bigger than 0");
       return
     }
 
