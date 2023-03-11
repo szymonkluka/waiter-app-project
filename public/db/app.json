@@ -2,20 +2,22 @@
   "tables": [
     {
       "id": "Table 1",
-      "status": "Busy",
-      "peopleAmount": "1",
-      "maxPeopleAmount": "2",
-      "bill": "2"
+      "status": "Free",
+      "peopleAmount": "2",
+      "maxPeopleAmount": "8",
+      "bill": "99"
     },
     {
       "id": "Table 2",
-      "status": "Reserved",
-      "peopleAmount": "1",
-      "maxPeopleAmount": "6",
+      "title": "Title 2",
+      "status": "Busy",
+      "peopleAmount": "3",
+      "maxPeopleAmount": "3",
       "bill": "22"
     },
     {
       "id": "Table 3",
+      "title": "Title 3",
       "status": "Busy",
       "peopleAmount": "0",
       "maxPeopleAmount": "2",
@@ -23,6 +25,7 @@
     },
     {
       "id": "Table 4",
+      "title": "Title 4",
       "status": "Busy",
       "peopleAmount": "0",
       "maxPeopleAmount": "2",
@@ -30,6 +33,7 @@
     },
     {
       "id": "Table 5",
+      "title": "Title 5",
       "status": "Reserved",
       "peopleAmount": "2",
       "maxPeopleAmount": "3",

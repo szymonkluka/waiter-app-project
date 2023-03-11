@@ -7944,6 +7944,11 @@ react-bootstrap@^2.6.0:
     uncontrollable "^7.2.1"
     warning "^4.0.3"
 
+react-custom-alert@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/react-custom-alert/-/react-custom-alert-1.0.4.tgz#f81c9bfcc8a3409a4270f3c3d0a2eaf47b3eb2c9"
+  integrity sha512-K3CiITSy9+HQDGk0lyCVfsKDdmgeMV1giy8bIulVDyKBGyOOGkrHndac+DJO2Bur38hvhJy4JbrHsv/9E7HeCg==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"
