@@ -3,16 +3,11 @@ import { getTableById } from '../../../redux/tablesRedux';
 import { useParams, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-
-
 const TableEdit = () => {
   const { id } = useParams();
   const tableId = useSelector(state => getTableById(state, id));
-
   if (!tableId) return <Navigate to="/" />;
-
   else
-
     return (
       <>
         <div className="mb-2">

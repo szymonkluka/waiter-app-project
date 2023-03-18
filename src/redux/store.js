@@ -5,7 +5,6 @@ import thunk from 'redux-thunk';
 
 const subreducers = {
   tables: tablesReducer,
-
 }
 
 const reducer = combineReducers(subreducers);

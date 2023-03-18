@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { getTableById } from '../../../redux/tablesRedux';
 import { ClipLoader } from 'react-spinners';
 
-
 const TableForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -59,7 +58,6 @@ const TableForm = () => {
     if (value === 'Busy') {
       setBill('0');
     }
-
     setStatus(value);
   };
 
@@ -73,6 +71,18 @@ const TableForm = () => {
     setPeopleAmount(value);
   };
 
+  const handleMaxPeopleAmount = (value) => {
+    if (value < 0 && Number(value)) {
+      value = '0';
+    }
+    if (value > 10) {
+      value = '10';
+    }
+    setMaxPeopleAmount(value)
+    if (Number(peopleAmount) > value) {
+      setPeopleAmount(value)
+    }
+  }
 
   return (
     <Row className="justify-content-center">
@@ -81,7 +91,6 @@ const TableForm = () => {
           <h2>
             <strong>{table.title}</strong>
           </h2>
-
           <div className="mb-2" controlId="formBasicEmail">
             <div className="d-flex">
               <div className="p-1 flex me-2"><Form.Label style={({ marginRight: "5px" })}><strong>Status:</strong></Form.Label></div>
@@ -104,6 +113,7 @@ const TableForm = () => {
               <div className="p-1 flex-2 me-4"><Form.Label style={({ marginLeft: "0px" })}><strong>People:</strong></Form.Label></div>
               <div className="p-1 flex">
                 <FormControl
+                  disabled={status === 'Free' || status === 'Cleaning'}
                   input type="number"
                   min="0"
                   max="10"
@@ -118,7 +128,7 @@ const TableForm = () => {
                   min="0"
                   max="10"
                   value={maxPeopleAmount}
-                  onChange={(e) => setMaxPeopleAmount(e.target.value)}
+                  onChange={(e) => handleMaxPeopleAmount(e.target.value)}
                   placeholder="Nr" style={{ width: "58px", height: "30px", marginRigt: "50px", }} />
               </div>
             </div>

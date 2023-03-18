@@ -1,15 +1,9 @@
-import { ClipLoader } from 'react-spinners';
-
 export const getAllTables = ({ tables }) => tables;
 export const getTableById = ({ tables }, id) => tables.find(table => table.id === id);
-
-
 export const getTables = payload => ({ type: GET_TABLES, payload });
 export const editedTables = payload => ({ type: EDIT_TABLES, payload })
 
 const createActionName = actionName => `app/tables/${actionName}`;
-
-
 const GET_TABLES = createActionName('GET_TABLES');
 
 export const fetchData = () => {
@@ -37,8 +31,6 @@ const createActionNames = (action) => {
 
 const EDIT_TABLES = createActionNames('EDIT_DATA');
 
-
-
 export const addChangedData = (tables) => {
   return (dispatch) => {
     const options = {
@@ -50,8 +42,8 @@ export const addChangedData = (tables) => {
     };
     fetch(`${'http://localhost:3131'}/tables/${tables.id}`, options)
       .then((response) => response.json())
-      .then((data) => dispatch(editedTables, ClipLoader(data)));
-
+      .then((data) => dispatch(editedTables(data)))
+      .then(() => dispatch(fetchData()));
   };
 }
 
