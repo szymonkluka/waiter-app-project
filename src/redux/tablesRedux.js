@@ -43,7 +43,7 @@ export const addChangedData = (tables) => {
     fetch(`${'http://localhost:3131'}/tables/${tables.id}`, options)
       .then((response) => response.json())
       .then((data) => dispatch(editedTables(data)))
-      .then(() => dispatch(fetchData()));
+      .then((data) => dispatch(fetchData(data)));
   };
 }
 
