@@ -1,6 +1,6 @@
 import { useNavigate, useParams, Navigate } from 'react-router-dom';
 import { Button, Col, Form, Row, FormControl } from 'react-bootstrap';
-import { addChangedData } from '../../../redux/tablesRedux';
+import { updateTable } from '../../../redux/tablesRedux';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -39,7 +39,7 @@ const TableForm = () => {
       const editedData = {
         id, title, status, peopleAmount, maxPeopleAmount, bill,
       };
-      dispatch(addChangedData(editedData));
+      dispatch(updateTable(editedData));
       navigate('/');
       clipLoader(handleSubmit);
     }
@@ -84,6 +84,12 @@ const TableForm = () => {
     }
   }
 
+  const billChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setBill(value);
+  };
+
+
   return (
     <Row className="justify-content-center">
       <Col className="col-12">
@@ -91,14 +97,14 @@ const TableForm = () => {
           <h2>
             <strong>{table.title}</strong>
           </h2>
-          <div className="mb-2" controlId="formBasicEmail">
+          <div className="mb-2">
             <div className="d-flex">
               <div className="p-1 flex me-2"><Form.Label style={({ marginRight: "5px" })}><strong>Status:</strong></Form.Label></div>
               <div className="">
                 <Form.Select aria-label="Default select example"
                   value={status}
                   onChange={(e) => handleStatus(e.target.value)}
-                  placeholder="Nr" style={{ width: "280px", height: "40px", }}
+                  placeholder="0" style={{ width: "280px", height: "40px", }}
                 >
                   <option value='Free'>Free</option>;
                   <option value='Reserved'>Reserved</option>;
@@ -108,41 +114,41 @@ const TableForm = () => {
               </div>
             </div>
           </div>
-          <div className="mb-2" controlId="formBasicEmail">
+          <div className="mb-2">
             <div className="d-flex">
-              <div className="p-1 flex-2 me-4"><Form.Label style={({ marginLeft: "0px" })}><strong>People:</strong></Form.Label></div>
+              <div className="p-1 flex-2 me-4"><Form.Label><strong>People:</strong></Form.Label></div>
               <div className="p-1 flex">
                 <FormControl
                   disabled={status === 'Free' || status === 'Cleaning'}
-                  input type="number"
+                  type="number"
                   min="0"
                   max="10"
                   value={peopleAmount}
                   onChange={(e) => handlePeopleAmount(e.target.value)}
-                  placeholder="Nr" style={{ width: "58px", height: "30px", textAlign: "center", marginRigt: "50px", }} />
+                  placeholder="0" style={{ width: "58px", height: "30px", textAlign: "center", marginRigt: "50px", }} />
               </div>
               <div className="p-2 flex-2">/</div>
               <div className="p-1 flex">
                 <FormControl
-                  input type="number"
+                  type="number"
                   min="0"
                   max="10"
                   value={maxPeopleAmount}
                   onChange={(e) => handleMaxPeopleAmount(e.target.value)}
-                  placeholder="Nr" style={{ width: "58px", height: "30px", marginRigt: "50px", }} />
+                  placeholder="0" style={{ width: "58px", height: "30px", marginRigt: "50px", }} />
               </div>
             </div>
           </div>
           {status === 'Busy' ? (
-            <div className="mb-2" controlId="formBasicEmail">
+            <div className="mb-2">
               <div className="d-flex">
-                <div className="p-1 flex-2"><Form.Label style={({ marginLeft: "0px" })}><strong>Amount:</strong></Form.Label></div>
+                <div className="p-1 flex-2"><Form.Label><strong>Amount:</strong></Form.Label></div>
                 <div className="p-2 flex-2"><Form.Label style={({ marginLeft: "20px" })}>$</Form.Label></div>
                 <div className="p-1 flex">
                   <FormControl
                     value={bill}
-                    onChange={(e) => setBill(e.target.value)}
-                    placeholder="Nr" style={{ width: "45px", height: "30px", marginRigt: "50px", }} />
+                    onChange={billChange}
+                    placeholder="0" style={{ width: `${bill.length + 4}ch`, marginRigt: "50px", minWidth: "50px" }} />
                 </div>
               </div>
             </div>
