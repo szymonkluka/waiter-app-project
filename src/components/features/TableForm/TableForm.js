@@ -1,11 +1,10 @@
-import { useNavigate, useParams, Navigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Col, Form, Row, FormControl } from 'react-bootstrap';
 import { updateTable } from '../../../redux/tablesRedux';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getTableById } from '../../../redux/tablesRedux';
-import { ClipLoader } from 'react-spinners';
 
 const TableForm = () => {
   const { id } = useParams();
@@ -14,8 +13,6 @@ const TableForm = () => {
   const table = useSelector((state) => getTableById(state, id));
 
   const handleSubmit = () => {
-    const clipLoader = () => { return <ClipLoader size={150}></ClipLoader> }
-
     if (maxPeopleAmount < (peopleAmount)) {
       alert("The number of customers cannot exceed the maximum number of customers at the table. Please change input nr 1 in People form.");
       return
@@ -33,15 +30,12 @@ const TableForm = () => {
       return
     }
 
-    if (!table) return <Navigate to="/" />;
-
     else {
       const editedData = {
         id, title, status, peopleAmount, maxPeopleAmount, bill,
       };
       dispatch(updateTable(editedData));
       navigate('/');
-      clipLoader(handleSubmit);
     }
   };
 
@@ -84,7 +78,7 @@ const TableForm = () => {
     }
   }
 
-  const billChange = (e) => {
+  const handleBill = (e) => {
     const value = e.target.value.replace(/\D/g, "");
     setBill(value);
   };
@@ -147,7 +141,7 @@ const TableForm = () => {
                 <div className="p-1 flex">
                   <FormControl
                     value={bill}
-                    onChange={billChange}
+                    onChange={handleBill}
                     placeholder="0" style={{ width: `${bill.length + 4}ch`, marginRigt: "50px", minWidth: "50px" }} />
                 </div>
               </div>

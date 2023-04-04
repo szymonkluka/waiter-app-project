@@ -2,16 +2,14 @@ export const getAllTables = ({ tables }) => tables;
 export const getTableById = ({ tables }, id) => tables.find(table => table.id === id);
 
 const createActionName = actionName => `app/tables/${actionName}`;
-const createActionNameStatus = (action) => {
-  return `app/status/${action}`;
-};
-const EDIT_TABLE = createActionNameStatus();
+
+const EDIT_TABLE = createActionName('EDIT_TABLE');
 const GET_TABLES = createActionName('GET_TABLES');
 const setTables = payload => ({ type: GET_TABLES, payload });
 
 export const fetchData = () => {
   return (dispatch) => {
-    fetch('http://localhost:3131/tables')
+    fetch('https://waiter-app-project.szymonkluka1.repl.co/tables')
       .then((response) => response.json())
       .then((data) => dispatch(setTables(data)));
   };
@@ -26,7 +24,7 @@ export const updateTable = (tables) => {
       },
       body: JSON.stringify(tables)
     };
-    fetch(`${'http://localhost:3131'}/tables/${tables.id}`, options)
+    fetch(`${'https://waiter-app-project.szymonkluka1.repl.co'}/tables/${tables.id}`, options)
       .then((response) => response.json())
       .then(() => dispatch(fetchData()));
   };
