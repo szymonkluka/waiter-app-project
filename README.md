@@ -1,1 +1,1 @@
-https://waiter-app-project.szymonkluka1.repl.co/
+https://replit.com/@szymonkluka1/waiter-app-project
